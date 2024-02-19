@@ -26,4 +26,18 @@ class UsersController < ApplicationController
       redirect_to("/users", { :notice => "User failed to create successfully." })
     end
   end
+
+  def update
+    user_id = params.fetch("user_id")
+    @the_user = User.find(user_id)
+
+    @the_user.username = params.fetch("input_username")
+
+    if @the_user.valid?
+      @the_user.save
+      redirect_to("/users/#{@the_user.username}", { :notice => "User updated successfully."} )
+    else
+      redirect_to("/users/#{@the_user.username}", { :alert => "User failed to update successfully." })
+    end
+  end
 end

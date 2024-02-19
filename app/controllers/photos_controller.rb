@@ -43,17 +43,17 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @the_comment = Comment.new
+    @the_photo = Photo.new
   
-    @the_comment.photo_id = params.fetch("input_photo_id")
-    @the_comment.author_id = params.fetch("input_author_id")
-    @the_comment.body = params.fetch("input_comment")
+    @the_photo.image = params.fetch("input_image")
+    @the_photo.caption= params.fetch("input_caption")
+    @the_photo.owner_id = params.fetch("input_owner_id")
   
-    if @the_comment.valid?
-      @the_comment.save
-      redirect_to("/photos/#{@the_comment.photo_id}", { :notice => "Photo created successfully." })
+    if @the_photo.valid?
+      @the_photo.save
+      redirect_to("/photos", { :notice => "Photo created successfully." })
     else
-      redirect_to("/photos/#{@the_comment.photo_id}", { :notice => "Photo failed to create successfully." })
+      redirect_to("/photos", { :notice => "Photo failed to create successfully." })
     end
   end  
 end
