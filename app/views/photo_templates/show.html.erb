@@ -38,7 +38,7 @@
     Edit photo
   </dt>
   <dd>
-    <form action="/update_photo/#{@photo_id}" method="post">
+    <form action="/update_photo/<%= @photo.id %>" method="post">
       <label for="browser_image">Image</label>
       <input id="browser_image" type="text" name="input_image" placeholder="Enter a URL for the image..." value=<%= @photo.image %>>
 

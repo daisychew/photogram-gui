@@ -36,9 +36,9 @@ class PhotosController < ApplicationController
 
     if @the_photo.valid?
       @the_photo.save
-      redirect_to("/photos/#{@the_photo.id}", { :notice => "Photo updated successfully."} )
+      redirect_to("/photos/#{photo_id}", { :notice => "Photo updated successfully."} )
     else
-      redirect_to("/photos/#{@the_photo.id}", { :alert => "Photo failed to update successfully." })
+      redirect_to("/photos/#{photo_id}", { :alert => "Photo failed to update successfully." })
     end
   end
 
@@ -51,7 +51,7 @@ class PhotosController < ApplicationController
   
     if @the_photo.valid?
       @the_photo.save
-      redirect_to("/photos", { :notice => "Photo created successfully." })
+      redirect_to("/photos/#{@the_photo.id}", { :notice => "Photo created successfully." })
     else
       redirect_to("/photos", { :notice => "Photo failed to create successfully." })
     end
