@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get("/users", {:controller => "user", action: => "index" })
+  get("/", controller: "users", action: "index")                                                                                             
+     
+  get("/users", {:controller => "users", :action => "index" })
+                                     
+  post("/users/:username", {:controller => "users", :action => "show"})
 
-  post("/users/:username", {:controller => "user", :action => "show"})
+  get("/photos", {:controller => "photos", :action => "index" })
 
-  get("/photos", {:controller => "photo", action: => "index" })
-
-  post("/photos/:photo_id", {:controller => "photo", :action => "show"})
+  post("/photos/:photo_id", {:controller => "photos", :action => "show"})
 end
